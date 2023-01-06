@@ -12,10 +12,16 @@ The goal of the program is to achieve following:
 * Create chain class that has validation and proof of work functions
 * Add streamlit code for user-friendly web interface
 
-
+> Initial state (initialised blockchain)
 ![app](images/InitialState.png)
+
+>Added multiple blocks in the blockchain
 ![app](images/MultipleBlocks.png)
+
+>Blocks can be seen in drop down in sidebar
 ![app](images/MultipleBlocksDD.png)
+
+>Checking validity of the blockchain
 ![app](images/Validity.png)
 
 ## Technologies
