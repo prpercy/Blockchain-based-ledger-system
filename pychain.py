@@ -82,6 +82,7 @@ class Block:
     def hash_block(self):
         sha = hashlib.sha256()
 
+        # hash the record 
         record = str(self.record).encode()
         sha.update(record)
 
@@ -94,9 +95,11 @@ class Block:
         prev_hash = str(self.prev_hash).encode()
         sha.update(prev_hash)
 
+        # hash the nonce
         nonce = str(self.nonce).encode()
         sha.update(nonce)
-
+        
+        # Return the hexadecimal representation of the hash
         return sha.hexdigest()
 
 
@@ -106,6 +109,10 @@ class PyChain:
     difficulty: int = 4
 
     def proof_of_work(self, block):
+        """
+        Find a nonce value that, when hashed with the other block attributes,
+        results in a hash value that starts with a certain number of zeros.
+        """
 
         calculated_hash = block.hash_block()
 
@@ -121,10 +128,16 @@ class PyChain:
         return block
 
     def add_block(self, candidate_block):
+        """
+        Add a block to the PyChain if it has a valid proof of work.
+        """
         block = self.proof_of_work(candidate_block)
         self.chain += [block]
 
     def is_valid(self):
+        """
+        Check validity of the chain
+        """
         block_hash = self.chain[0].hash_block()
 
         for block in self.chain[1:]:
@@ -230,9 +243,9 @@ st.sidebar.write(selected_block)
 
 if st.button("Validate Chain"):
     if pychain.is_valid():
-        st.write("Chain is validated and it is in good order.")
+        st.success("Chain is validated and it is in good order." , icon="✅")
     else:
-        st.write("Chain validation failed. Someone has tampered the chain.")
+        st.warning("Chain validation failed. Someone has tampered the chain.", icon="⚠️")
 
 ################################################################################
 # Step 4:
