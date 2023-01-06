@@ -13,6 +13,11 @@ The goal of the program is to achieve following:
 * Add streamlit code for user-friendly web interface
 
 
+![app](images/InitialState.png)
+![app](images/MultipleBlocks.png)
+![app](images/MultipleBlocksDD.png)
+![app](images/Validity.png)
+
 ## Technologies
 
 > Program uses Python 3.7.x version and Jupyter Lab
